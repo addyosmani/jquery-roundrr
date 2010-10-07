@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>AddyOsmani.com - Roundrr Demo</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+	<link rel="stylesheet" type="text/css" href="fonts/stylesheet.css"></link>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type='text/javascript' src='scripts/ui/jQuery.roundrr.js'></script>
+	
+
+    <script type="text/javascript">
+	
+
+jQuery(document).ready(function()
+{
+	  
+         var currentImage = "";
+         var interfaceLock = false;
+
+	  	jQuery("#roundrr_container").roundrrwheel(
+	  	{
+			
+			centerClass: 'roundrr_center',
+			listClass: 'list', 
+			itemClass: 'item', 
+			radius: 220, 
+			animSpeed:400, 
+			centerX: 29, 
+			centerY: 60, 
+			animationEffect: 1, //(1:off, 5:light,10:heavy, 15:subtle)
+			selectEvent: "click", 	
+			//on selecting/clicking an item on the wheel
+			onSelect: function($selected)
+			{  
+			showLargeImage($selected, 'noanim');
+			},
+			//on beginning to spin/animate the wheel
+			onNextBegin: function($m)
+			{
+			   
+			   interfaceLock = true;
+			 
+			},
+			onPrevBegin: function($m)
+			{
+			   
+			   interfaceLock = true;
+			 
+			},
+			//once an image has moved under the 'pick'
+			onImageFocus: function($item)
+			{
+
+            showLargeImage($item, 'none');
+		
+			 
+			},
+			//once an image/image set is no longer under the 'pick'
+			onImageBlur:  function($item)
+			{
+			   
+			}, 
+			//once the animation has completed
+			onAnimationComplete: function($menu)
+			{
+			
+			     jQuery('.centerImage').attr('src', currentImage);
+			     jQuery('.centerImage').load(function()
+			     {
+			       
+			        interfaceLock = false;
+			     });
+			
+			 
+			},
+			angleOffset: Math.PI, 
+			onShow: function($menuitems)
+			{
+				$menuitems.each(function(i)
+				{
+					var $this = jQuery(this);
+					$this.delay(i*100).fadeIn(500);
+				});
+				
+				
+			}
+			
+		});
+		
+		jQuery("#roundrr_container").roundrrwheel("show");
+		$('#next').bind('click', spinMenuLeft);
+		$('#prev').bind('click', spinMenuRight);
+		
+		function showLargeImage($i, mode)
+		{
+		  
+			interfaceLock = true;
+			var thisImage   = $i.find('img');
+			var focusedImage = thisImage.attr('src');
+            var largerImage = focusedImage.replace('_bigger', '');	
+            var imageCaption = thisImage.attr('alt');
+            var speechBubble =  jQuery('.roundrr_speech');
+            speechBubble.fadeIn();   
+            
+            currentImage = largerImage;
+            
+            jQuery('#roundrr_caption').fadeIn();
+			jQuery('#roundrr_caption').html(imageCaption);
+            
+            if(mode=='noanim')
+            {
+            
+                jQuery('.centerImage').attr('src', currentImage);
+			     jQuery('.centerImage').load(function()
+			     {
+			        interfaceLock = false;
+			        
+			     });
+            }
+           
+		}
+		
+		
+		   /*Spin the menu to the left*/
+			function spinMenuLeft()
+			{
+			   if(!(interfaceLock))
+			  {
+			   jQuery("#roundrr_container").roundrrwheel("prev");
+			   }			   
+			}
+			
+			/*Spin the menu to the right*/
+			function spinMenuRight()
+			{
+		      if(!(interfaceLock))
+			  {
+			   jQuery("#roundrr_container").roundrrwheel("next");
+			   } 
+			}
+			
+			/*Keydown events*/
+			$(window).keydown(function(event) 
+			{
+				var keycode = event.keyCode;
+				switch(keycode)
+				{
+				  case 39:
+           		  spinMenuLeft();
+  				  break;
+  				  case 37:
+           		  spinMenuRight();
+  				   break;
+		     } });
+
+
+		
+		//setInterval(spinMenuLeft, 5000);
+
+	  });
+	</script>
+  </head>
+  <body>
+  
+
+  
+  <div class="container">
+
+
+  <div id="roundrr_navigation"> 
+		<a href="#" id="next"></a>
+  		<a href="#" id="prev"></a>
+  		<img class="keyboard" src="images/keyboard.png"></img>
+  		<p>
+  		 You can also navigate using the left and right keys on your keyboard.
+  		</p>
+ </div>
+  
+  
+  
+   <div class="roundrr_center">
+   
+   </div>
+   
+   
+   <div class="roundrr_speech">
+   
+   </div>
+ 
+  
+  
+  <div id="roundrr_caption">
+   </div>
+   
+  <div id="roundrr_pick">
+   </div>
+  
+  
+	<div id='roundrr_container'>
+		<ul class='list'>
+		
+			<li class='item'>	
+			<div class='my_class'> 
+			<img alt="Al Yankovic" src="http://a0.twimg.com/profile_images/246073324/IL2_bigger.jpg"></img> 
+			</div>	
+			</li>
+
+	        <li class='item'>	
+			<div class='my_class'>  
+			<img  alt="Taylor Swift" src="http://a0.twimg.com/profile_images/390558464/Photo_190_bigger.jpg"></img>  </div>	</li>
+			
+
+           <li class='item'>	
+			<div class='my_class'>  
+			<img alt="Dandy Warhols" src="http://a1.twimg.com/profile_images/930308885/ban_bigger.jpg"></img>
+			</div>	
+			</li>
+				
+			<li class='item'>	
+			<div class='my_class'>  
+			<img alt="Lenny Kravitz" src="http://a0.twimg.com/profile_images/1117384560/image_bigger.jpg"></img>
+			</div>	
+			</li>
+
+			<li class='item'>	
+			<div class='my_class'>  
+			<img alt="Katy Perry" src="http://a3.twimg.com/profile_images/1107052519/i_mblue_bigger.jpg"></img>  </div>	</li>
+			
+			
+			<li class='item'>	
+			<div  class='my_class'>  
+			<img alt="Ke$ha"src="http://a3.twimg.com/profile_images/676841123/kesha-grammy-2010_bigger.jpg"></img>  
+			</div>	
+			</li>
+
+			
+			<li class='item'>	
+			<div class='my_class'>  
+			<img alt="Eminem" src="http://a0.twimg.com/profile_images/859433636/recoveryapprovedcrop_bigger.jpg"></img>  </div>	
+			</li>
+
+			<li class='item'>	
+			<div class='my_class'>  
+			<img  alt="Lady Gaga" src="http://a3.twimg.com/profile_images/941805227/braphoto_bigger.jpg"></img>  </div>	</li>
+			
+			<li class='item'>	
+			<div class='my_class'>  
+			<img  alt="Chris Cornell" src="http://a1.twimg.com/profile_images/107748009/chris-cornell-scream_bigger.jpg"></img>  </div>	
+			</li>
+			
+			<li class='item'>	
+			<div class='my_class'>  
+			<img  alt="Kanye West" src="http://a2.twimg.com/profile_images/1132696610/securedownload_bigger.jpeg"></img>  </div>	</li>
+			
+			
+			<li class='item'>	
+			<div class='my_class'>  
+			<img  alt="Stereophonics" src="http://a1.twimg.com/profile_images/402742469/myspacepic_bigger.jpg"></img>  </div>	</li>
+			
+			<li class='item'>	
+			<div class='my_class'>  
+			<img  alt="Rob Thomas" src="http://a2.twimg.com/profile_images/1008825866/RT600_53_bigger.jpg"></img>  </div>	</li>
+			
+			<li class='item'>	
+			<div class='my_class'>  
+			<img  alt="Pink" src="http://a3.twimg.com/profile_images/549375583/Pinkdeborahanderson_112_bigger.jpg"></img>  </div>	</li>
+			
+			<li class='item'>	
+			<div class='my_class'>  <img  alt="Weezer" src="http://a0.twimg.com/profile_images/1106738472/Hurley250_bigger.jpg"></img>  </div>	
+			</li>
+			
+						<li class='item'>	
+			<div class='my_class'>  
+			<img alt="Eric Prydzz" src="http://a0.twimg.com/profile_images/425527348/ejebild_bigger.jpg"></img>  
+			</div>	
+			</li>
+			
+				<li class='item'>	
+				<div class='my_class'>  <img  alt="The Streets" src="http://a3.twimg.com/profile_images/121412115/Mike_Skinner-Big_Issue-00051_bigger.jpg"></img>  
+				</div>	</li>
+				
+				
+		
+				
+				
+			
+					
+				
+		
+		
+
+		</ul>
+	</div>
+	
+	
+	
+	
+  
+  </div>
+
+  
+  
+
+  </body>
+	
+</html>
+

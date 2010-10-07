@@ -1,0 +1,155 @@
+/* jQuery Roundrr CSS Stylesheet 1.0 */
+
+body {
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	width: 950px;
+	background-color: black;
+	background-image: url("../images/tile1.jpg");
+}
+
+a {
+	color: white
+}
+
+#next {
+	border-width: 0px;
+	background-image: url(../images/btn.png);
+	height: 38px;
+	width: 112px;
+	display: block;
+}
+
+#prev {
+	border-width: 0px;
+	background-image: url(../images/btn2.png);
+	height: 38px;
+	width: 112px;
+	display: block;
+	margin-top: 5px;
+}
+
+.container {
+	margin-top: 100px;
+	position: relative;
+	height: 600px
+}
+
+.my_class {
+	font-size: 1.5em;
+	color: #abc;
+	background-color: #ffffff;
+	border: 2px solid white;
+}
+
+.my_class:hover {
+	border: 2px solid #ccc;
+}
+
+.my_class img {
+	height: 48px;
+	width: 48px;
+}
+
+#roundrr_navigation {
+	position: absolute;
+	top: 105px;
+	z-index: 500;
+	width: 200px;
+	height: 100px;
+	left: 750px;
+}
+
+#roundrr_navigation p{
+color:white;
+font-family:Arial;
+font-size:12px;
+margin-left:-9px;
+margin-top:-40px;
+width:145px;
+
+}
+
+.centerImage {
+	width: 180px;
+}
+
+.roundrr_center {
+	background-color: transparent;
+	height: 160px;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 100px;
+	width: 195px;
+}
+
+.roundrr_speech {
+	background-color: transparent;
+	background-image: url("../images/speech.png");
+	height: 62px;
+	left: -6px;
+	margin-bottom: 0;
+	margin-left: 41%;
+	margin-right: auto;
+	position: absolute;
+	top: 30px;
+	width: 180px;
+	display: none;
+}
+
+#roundrr_pick {
+	background-image: url(../images/pick4.png);
+	height: 105px;
+	margin-bottom: 0;
+	margin-left: 45%;
+	margin-right: auto;
+	position: absolute;
+	top: -81px;
+	width: 94px;
+	z-index: 500;
+}
+
+.keyboard{
+
+    margin-left:-78px;
+}
+
+#roundrr_caption {
+	color: white;
+	font-size: 27px;
+	height: 22px;
+	left: -2px;
+	letter-spacing: -1px;
+	margin-bottom: 0;
+	margin-left: 42%;
+	margin-right: auto;
+	position: absolute;
+	top: 54px;
+	width: 155px;
+	z-index: 500;
+	/*comment out the following to disable @font-face use*/
+font-family: 'TradeGothicLTStdBoldCondensed', sans-serif;
+}
+
+#roundrr_container, #roundrr_container2 {
+	position: relative;
+	left: -45px;
+	top: -120px;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.roundrr_div_item {
+	background-color: none;
+	height: 50px;
+	padding: 40px;
+	color: #234;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	cursor: pointer;
+}
