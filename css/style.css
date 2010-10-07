@@ -15,7 +15,7 @@ a {
 
 #next {
 	border-width: 0px;
-	background-image: url(../images/btn.png);
+	background-image: url(../images/btn2.png);
 	height: 38px;
 	width: 112px;
 	display: block;
@@ -23,7 +23,7 @@ a {
 
 #prev {
 	border-width: 0px;
-	background-image: url(../images/btn2.png);
+	background-image: url(../images/btn.png);
 	height: 38px;
 	width: 112px;
 	display: block;

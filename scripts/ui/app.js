@@ -8,7 +8,7 @@ jQuery(document).ready(function()
 	  	{
 			autoplay: false,
 			autoplayDirection: 'anticlockwise',
-			autoplayDuration: 4500,
+			autoplayDuration: 4000,
 			centerClass: 'roundrr_center',
 			listClass: 'list', 
 			itemClass: 'item', 
@@ -78,8 +78,8 @@ jQuery(document).ready(function()
 		});
 		
 		jQuery("#roundrr_container").roundrrwheel("show");
-		$('#next').bind('click', spinMenuLeft);
-		$('#prev').bind('click', spinMenuRight);
+		$('#next').bind('click', spinMenuRight);
+		$('#prev').bind('click', spinMenuLeft);
 		
 		function showLargeImage($i, mode)
 		{

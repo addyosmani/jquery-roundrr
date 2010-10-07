@@ -427,7 +427,7 @@
 			//for the current element and handle accordingly.
 			switch(direction)
 			{
-			  case 'prev':
+			  case 'next':
 			  
 			if( (thisLeft == reqLeftA &&  thisTop == reqTopA))
 			{
@@ -439,7 +439,7 @@
 			
 			  break;
 			  
-			  case 'next':
+			  case 'prev':
 			  
 			 if( (thisLeft == reqLeftB &&  thisTop == reqTopB))
 			{
