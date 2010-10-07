@@ -6,7 +6,9 @@ jQuery(document).ready(function()
 
 	  	jQuery("#roundrr_container").roundrrwheel(
 	  	{
-			
+			autoplay: false,
+			autoplayDirection: 'anticlockwise',
+			autoplayDuration: 4500,
 			centerClass: 'roundrr_center',
 			listClass: 'list', 
 			itemClass: 'item', 
@@ -16,6 +18,7 @@ jQuery(document).ready(function()
 			centerY: 60, 
 			animationEffect: 1, //(1:off, 5:light,10:heavy, 15:subtle)
 			selectEvent: "click", 	
+			centerImageSrc: "images/placeholder2.png",
 			//on selecting/clicking an item on the wheel
 			onSelect: function($selected)
 			{  
@@ -96,7 +99,6 @@ jQuery(document).ready(function()
             
             if(mode=='noanim')
             {
-            
                 jQuery('.centerImage').attr('src', currentImage);
 			     jQuery('.centerImage').load(function()
 			     {
@@ -140,8 +142,5 @@ jQuery(document).ready(function()
   				   break;
 		     } });
 
-
-		
-		//setInterval(spinMenuLeft, 5000);
 
 	  });

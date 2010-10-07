@@ -15,6 +15,9 @@
 		
 	// private :: defaults
 	var defaults = {
+	    autoplay: false,
+	    autoplayDirection: 'clockwise',
+	    autoplayDuration: 5000,
 	    centerClass: "roundrr_center",
 		listClass: "list",
 		itemClass: "item",
@@ -29,6 +32,7 @@
 		animationEffect:1,
 		initialScale: 1,
 		angleOffset: 0, // in radians
+		centerImageSrc: 'images/placeholder2.png',
 		centerX: 0,
 		centerY: 0,
 		requiredLeftA:'-55.1904px', // main image n-1's left position
@@ -89,7 +93,7 @@
 		
 		//inner-wrap the center class
 		
-		jQuery('.' + o.centerClass).wrapInner("<img class='centerImage' src='images/placeholder2.png'></img>");
+		jQuery('.' + o.centerClass).wrapInner("<img class='centerImage' src='" + o.centerImageSrc + "'></img>");
 	
 		return $menu.each(function(m){
 			var $this = $(this);
@@ -151,13 +155,56 @@
 				.html(buildMenuHTML($menuitems, $m.opts));
 			// assign a selection event if the user has specified something
 			var $menuitems = $radialMenu.find("."+container.itemClz);
+			
+			
+			
+			
 			if($m.opts.selectEvent!=null)
 				$menuitems.bind($m.opts.selectEvent,selectMenuitem);
 			// append the roundrrwheel items inside the menu 
 			$radialMenu.appendTo($m.menu);
+			
+			//
+			var doAutoplay = $m.opts.autoplay;
+			
+			if(doAutoplay)
+			{
+			
+			switch($m.opts.autoplayDirection)
+			{
+			 case 'clockwise':
+			 
+			setInterval(function()
+			{
+			//$m.opts.onNextBegin($m);
+			switchItems($m, $m.raditems().length-1, 0, $m.opts.animationEffect, 'next');
+			
+			}, $m.opts.autoplayDuration);
+			
+			 break;
+			 
+			 case 'anticlockwise':
+			 setInterval(function()
+			{
+			//$m.opts.onPrevBegin($m);
+			switchItems($m, 0, $m.raditems().length-1, 1, 'prev');
+			
+			}, $m.opts.autoplayDuration);
+			 break;
+			
+			}
+			
+			
+			}
+			
+			
 			if(typeof(fn) == "function") fn($menuitems);
 			else $m.opts.onShow($menuitems); // user can do what they want
 			cancelBubble(evt);
+			
+			
+			
+			
 		},
 		hide: function(evt){ 
 			var $m = getMenu(evt);
@@ -354,6 +401,11 @@
 			var coords = getCoords(i+posOffset, len, $m.opts);
 			
 			
+			//TODO:
+			//$m.opts.onImageFocus($this); add a mode for switching between pick mode
+			//and wheel mode. wheel mode hides the pick.
+			
+			
 			//attempt to override custom case positions by extracting them from the
 			//array
 			switch(i)
@@ -367,6 +419,8 @@
 			  reqTopB = Math.floor(coords.y);
 			  break;			  
 			}
+			
+			
 			
 			
 			//effectively check the the switch of image position for n+1, n-1
