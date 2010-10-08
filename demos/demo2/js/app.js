@@ -132,7 +132,12 @@ function getLatestTweet(strUsername)
      
        
        var returns =  (data[0].text).parseURL().parseUsername().parseHashtag();
+       if(returns.length)
+       {
        jQuery('#roundrr_caption').html(returns);
+       }else{
+         Query('#roundrr_caption').html('Error retrieving Tweet content. API Requests may have been used up.');
+       }
        interfaceLock = false;
       
 
