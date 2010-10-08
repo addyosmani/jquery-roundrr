@@ -15,6 +15,7 @@
 		
 	// private :: defaults
 	var defaults = {
+	    mode: 'standard',
 	    autoplay: false,
 	    autoplayDirection: 'clockwise',
 	    autoplayDuration: 5000,
@@ -396,15 +397,27 @@
 			var thisLeft = Math.floor($this.css('left').replace('px',''));
 			var thisTop = Math.floor($this.css('top').replace('px',''));
 			
+			if($m.opts.mode == 'standard')
+			{
+			if(i==0)
+			{
+			  
+			  $m.opts.onImageFocus($this);
+			  $this.find('img').addClass('selected');
+			 
+			}else{
+			  $this.find('img').removeClass('selected');
+			}
+			}
+			
 			
 			// establish the new coordinates with a customizable offset; len*(Math.PI+(Math.sqrt(5)))
 			var coords = getCoords(i+posOffset, len, $m.opts);
 			
 			
-			//TODO:
-			//$m.opts.onImageFocus($this); add a mode for switching between pick mode
-			//and wheel mode. wheel mode hides the pick.
-			
+			if($m.opts.mode == 'pick')
+			{
+	
 			
 			//attempt to override custom case positions by extracting them from the
 			//array
@@ -419,8 +432,6 @@
 			  reqTopB = Math.floor(coords.y);
 			  break;			  
 			}
-			
-			
 			
 			
 			//effectively check the the switch of image position for n+1, n-1
@@ -451,6 +462,8 @@
 			  
 			  break;
 			 
+			}
+			
 			}
 	
 

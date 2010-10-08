@@ -2,18 +2,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<title>AddyOsmani.com - Roundrr Demo</title>
+	<title>AddyOsmani.com - Roundrr Demo 2</title>
 	
 	<!--First stylesheet configures Roundrr presentation, second is font-face-->
-	<link rel="stylesheet" type="text/css" href="css/style.css"></link>
-	<link rel="stylesheet" type="text/css" href="fonts/stylesheet.css"></link>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css"></link>
+	
+	
+	<!--overrides for this demo-->
+	<style type="text/css">
+	.roundrr_speech {
+background-color:transparent;
+background-image:url("../../images/speech2.png");
+display:none;
+height:48px;
+left:-22px;
+margin-bottom:0;
+margin-left:35%;
+margin-right:auto;
+position:absolute;
+top:42px;
+width:254px;
+display:none;
+}
+
+#roundrr_caption {
+ font-size:24px;
+}
+	</style>
 
     <!--Include jQuery and jQuery roundrr dependancies-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script type='text/javascript' src='scripts/ui/jQuery.roundrr.js'></script>
+    <script type='text/javascript' src='../../scripts/ui/jQuery.roundrr.js'></script>
     
     <!-- Include Demo app code -->
-    <script type='text/javascript' src='scripts/ui/app.js'></script>
+    <script type='text/javascript' src='js/app.js'></script>
     
     
   </head>
@@ -26,9 +48,11 @@
   <div id="roundrr_navigation"> 
 		<a href="#" id="next"></a>
   		<a href="#" id="prev"></a>
-  		<img class="keyboard" src="images/keyboard.png"></img>
+  		<img class="keyboard" src="../../images/keyboard.png"></img>
   		<p>
   		 You can also navigate using the left and right keys on your keyboard.
+  		 <br><br>
+  		 Note in this demo that we are in 'standard' mode as opposed to 'pick' mode.
   		</p>
  </div>
   
@@ -46,9 +70,6 @@
   <div id="roundrr_caption">
    </div>
    
-  <!-- the pick which is displayed over the current image -->
-  <div id="roundrr_pick">
-   </div>
  
   
   <!-- the container of images -->
@@ -134,6 +155,16 @@
 				<li class='item'>	
 				<div class='my_class'>  <img  alt="The Streets" src="http://a3.twimg.com/profile_images/121412115/Mike_Skinner-Big_Issue-00051_bigger.jpg"></img>  
 				</div>	</li>
+				
+						<li class='item'>	
+				<div class='my_class'>  <img  alt="Rihanna" src="http://a2.twimg.com/profile_images/1114161974/IMG00199-20100827-1452_bigger.jpg"></img>  
+				</div>	</li>
+				
+				
+					
+				
+				
+				
 				
 				
 		</ul>

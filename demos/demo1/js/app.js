@@ -6,7 +6,7 @@ jQuery(document).ready(function()
 
 	  	jQuery("#roundrr_container").roundrrwheel(
 	  	{
-			mode: 'pick', //mode can be pick or standard
+			mode: 'standard', //mode can be pick or standard
 			autoplay: false,
 			autoplayDirection: 'anticlockwise',
 			autoplayDuration: 4000,
@@ -19,7 +19,7 @@ jQuery(document).ready(function()
 			centerY: 60, 
 			animationEffect: 1, //(1:off, 5:light,10:heavy, 15:subtle)
 			selectEvent: "click", 	
-			centerImageSrc: "images/placeholder2.png",
+			centerImageSrc: "../../images/placeholder2.png",
 			//on selecting/clicking an item on the wheel
 			onSelect: function($selected)
 			{  
@@ -29,13 +29,13 @@ jQuery(document).ready(function()
 			onNextBegin: function($m)
 			{
 			   
-			   interfaceLock = true;
+			   //interfaceLock = true;
 			 
 			},
 			onPrevBegin: function($m)
 			{
 			   
-			   interfaceLock = true;
+			   //interfaceLock = true;
 			 
 			},
 			//once an image has moved under the 'pick'
