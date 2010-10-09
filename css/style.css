@@ -139,7 +139,7 @@ font-family: 'TradeGothicLTStdBoldCondensed', sans-serif;
 	left: -45px;
 	top: -120px;
 	width: 100px;
-	height: 100px;
+	height: auto;
 	text-align: center;
 	margin: 0 auto;
 }

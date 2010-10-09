@@ -3,6 +3,8 @@ jQuery(document).ready(function()
 	  
          var currentImage = "";
          var interfaceLock = false; 
+         
+      
 
 	  	jQuery("#roundrr_container").roundrrwheel(
 	  	{
@@ -29,13 +31,13 @@ jQuery(document).ready(function()
 			onNextBegin: function($m)
 			{
 			   
-			   //interfaceLock = true;
+			   interfaceLock = true;
 			 
 			},
 			onPrevBegin: function($m)
 			{
 			   
-			   //interfaceLock = true;
+			   interfaceLock = true;
 			 
 			},
 			//once an image has moved under the 'pick'
@@ -55,12 +57,15 @@ jQuery(document).ready(function()
 			onAnimationComplete: function($menu)
 			{
 			
+			     
 			     jQuery('.centerImage').attr('src', currentImage);
 			     jQuery('.centerImage').load(function()
 			     {
 			       
 			        interfaceLock = false;
 			     });
+			     
+			     
 			
 			 
 			},
@@ -91,27 +96,43 @@ jQuery(document).ready(function()
 		  
 			interfaceLock = true;
 			var thisImage   = $i.find('img');
-			var focusedImage = thisImage.attr('src');
-            var largerImage = focusedImage.replace('_bigger', '');	
+			var imageSrc = thisImage.attr('src');
+            var largerImage = imageSrc.replace('_bigger', '');	
             var imageCaption = thisImage.attr('alt');
             var speechBubble =  jQuery('.roundrr_speech');
-            speechBubble.fadeIn();   
             
+            
+            var captionObject = jQuery('#roundrr_caption');
+            var centeredImage = jQuery('.centerImage');
+            var centerObject  = jQuery('.roundrr_center');
+            
+            speechBubble.fadeIn();   
             currentImage = largerImage;
             
-            jQuery('#roundrr_caption').fadeIn();
-			jQuery('#roundrr_caption').html(imageCaption);
+            captionObject.fadeIn();
+			captionObject.html(imageCaption);
+			
+			
+			/*utilize the slimbox API for lightbox triggering*/
+			centerObject.bind('click', function()
+			{
+			
+			  jQuery.slimbox(largerImage, imageCaption, { overlayOpacity:0.6});
+			  
+			});
+			
             
             if(mode=='noanim')
             {
-                jQuery('.centerImage').attr('src', currentImage);
-			     jQuery('.centerImage').load(function()
+                 centeredImage.attr('src', currentImage);
+			     centeredImage.load(function()
 			     {
 			        interfaceLock = false;
 			        
 			     });
             }
-           
+            
+   
 		}
 		
 		
