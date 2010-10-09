@@ -3,7 +3,10 @@ jQuery(document).ready(function()
 	  
          var currentImage = "";
          var interfaceLock = false; 
-         
+         var imageCaption = "";
+		 var imageSrc = "";
+		 var largerImage = "";
+		 var speechBubble = "";
       
 
 	  	jQuery("#roundrr_container").roundrrwheel(
@@ -91,15 +94,19 @@ jQuery(document).ready(function()
 		$('#next').bind('click', spinMenuRight);
 		$('#prev').bind('click', spinMenuLeft);
 		
+
+		
+		
 		function showLargeImage($i, mode)
 		{
 		  
 			interfaceLock = true;
 			var thisImage   = $i.find('img');
-			var imageSrc = thisImage.attr('src');
-            var largerImage = imageSrc.replace('_bigger', '');	
-            var imageCaption = thisImage.attr('alt');
-            var speechBubble =  jQuery('.roundrr_speech');
+			
+			imageSrc = thisImage.attr('src');
+            largerImage = imageSrc.replace('_bigger', '');	
+            imageCaption = thisImage.attr('alt');
+            speechBubble =  jQuery('.roundrr_speech');
             
             
             var captionObject = jQuery('#roundrr_caption');
@@ -113,12 +120,23 @@ jQuery(document).ready(function()
 			captionObject.html(imageCaption);
 			
 			
-			/*utilize the slimbox API for lightbox triggering*/
+			/*center area: utilize the slimbox API for lightbox triggering*/
 			centerObject.bind('click', function()
 			{
 			
-			  jQuery.slimbox(largerImage, imageCaption, { overlayOpacity:0.6});
+			  showLightbox();
 			  
+			});
+			
+			
+			/*hover case for central image*/
+			centeredImage.hover( function()
+			{
+			 $(this).css('opacity','0.5');
+			
+			}, function()
+			{
+			$(this).css('opacity','1');
 			});
 			
             
@@ -135,6 +153,12 @@ jQuery(document).ready(function()
    
 		}
 		
+		
+		  /*Show lightbox for current image*/
+		  function showLightbox()
+		  {
+		  jQuery.slimbox(largerImage, imageCaption, { overlayOpacity:0});
+		  }
 		
 		   /*Spin the menu to the left*/
 			function spinMenuLeft()
@@ -158,6 +182,7 @@ jQuery(document).ready(function()
 			$(window).keydown(function(event) 
 			{
 				var keycode = event.keyCode;
+				
 				switch(keycode)
 				{
 				  case 39:
@@ -166,6 +191,13 @@ jQuery(document).ready(function()
   				  case 37:
            		  spinMenuRight();
   				   break;
+  				   case 32:
+  				   if(largerImage.length)
+  				   {
+  				   showLightbox();
+  				   }
+  				   break;
+  				  
 		     } });
 
 

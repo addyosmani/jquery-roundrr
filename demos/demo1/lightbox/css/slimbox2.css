@@ -19,7 +19,12 @@
 	background-color: #fff;
 	margin-top:-200px;
 	margin-left:-50px;
+	
+	-webkit-margin-top:-560px;
+	-webkit-margin-left:-300px;
 }
+
+
 
 .lbLoading {
 	background: #fff url(loading.gif) no-repeat center;
