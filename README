@@ -7,3 +7,86 @@ jQuery Roundrr
 -----------------------------
 
 Roundrr is a plugin for plotting interactive image or multimedia content around a circle. It is based on RadMenu with an extended model for events occurring in the pre and post animation phases. It also contains further configuration for automated playback of a wheel of content and support for 'pick' interfaces which allow you to perform an action when an object falls between two other objects of fixed known position. 
+
+
+Usage
+-----------------------------
+As Roundrr supports quite an extensive collection of configuration parameters, I recommend taking a look at the source code to any of the demos for an example of how best to use it. This is often found in the /scripts/ui/app.js file.
+
+Roundrr requires initialisation as follows: 
+
+jQuery("#roundrr_container").roundrrwheel({});
+
+however, to get the most of it, I do recommend configuring as many of the options as possible to complete the level of user interaction you wish to provide.
+
+
+Configuration
+-----------------------------
+
+Roundrr is highly customisable and if you intend on using more images with it than are displayed in the demos, I recommend checking out demo1 as this uses the 'standard' mode. This is ideal for image galleries.
+
+The parameters for configuring Roundrr are as follows:
+
+mode: can be either 'standard' or 'pick'. Standard mode allows you to include as many images as you would like in the wheel/circle whilst 'pick' mode is ideal if you want to use the user interface idea presented in the main index.html file. 'pick' mode tests against the elements beside an element to establish what element a user wishes to 'focus' in on.
+
+autoplay: autoplay controls whether the wheel/circle plays automatically when the page finishes loading. It can either be set to true or false.
+
+autoplayDirection: supports either 'clockwise' or 'anticlockwise'. This is the direction in which the autoplay will move when you have autoplay enabled.
+
+autoplayDuration: This is the amount of time (in seconds) which Roundrr will wait before spinning to the next element.
+
+centerClass: centerClass is the CSS class of the markup which will contain the central images used in Roundrr. You do not have to use a centralImage at all and if you wish to keep this area blank, you may comment out the line jQuery('.' + o.centerClass).wrapInner() in the Roundrr init function.
+
+listClass: This is the CSS class of the UL element containing the list of items to be plotted
+
+itemClass: This is the CSS class of the items in listClass to be plotted.
+
+activeItemClass: The CSS class of the current active item. Note that 'pick' mode handles this manually through external jQuery code.
+
+show(): Show items in Roundrr
+
+hide(): Hide items (may be overridden)
+
+next(): Moves Roundrr clockwise to the next element
+
+prev(): Moves Roundrr anticlockwise to the previous element
+
+onSelect: A function executed when an item has been selected
+
+onImageFocus: A function executed when an image has appeared under the pick when in 'pick' mode
+
+onImageBlur: A function that gets executed when an image is not under the pick when in 'pick' mode
+
+onNextBegin: A function that gets executed before a .next() event is called on Roundrr.
+
+onPrevBegin: A function that gets executed before a .prev() event is called on Roundrr.
+
+radius: An integer representing the radius of the circle around which images are being plotted
+
+animationEffect: Roundrr (as per RadMenu) supports internal animation effects. 1 = no effect. 5 = subtle shift, 10 = fireworks effect, 15 = subtle animation variation.
+
+angleOffset: An integer representing the angle offset of the circle being plotted
+
+centerX: An integer representing the X center of the circle
+
+centerY: An integer representing the Y center of the circle 
+
+animSpeed: An integer representing the speed of the animation in Roundrr
+
+onAnimationComplete: A function that gets executed once the animation has completed (eg. when next() or prev()) have been called
+
+onShow: A function that gets executed when items are shown on the screen
+
+OnHide: A function that gets executed when items are hidden on the screen.
+
+Advanced
+-------------------------------
+
+requiredLeftA: ('pick' mode) A px string defining the necessary n-1's image's position (left) in order to further configure the 'pick' mode. 
+
+requiredTopA:('pick' mode) A px string defining the necessary n-1's image's position (top) in order to further configure the 'pick' mode. 
+
+requiredLeftB:('pick' mode) A px string defining the necessary n+1's image's position (left) in order to further configure the 'pick' mode. 
+
+requiredTopB:('pick' mode) A px string defining the necessary n+1's image's position (top) in order to further configure the 'pick' mode. 
+
