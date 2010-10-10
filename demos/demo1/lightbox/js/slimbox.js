@@ -133,7 +133,8 @@
 
 	function position() {
 		var l = win.scrollLeft(), w = win.width();
-		$([center, bottomContainer]).css("left", l + (w / 2) - 350);
+		var xt = 0.1* w + 70;
+		$([center, bottomContainer]).css("left", l + (w / 2) - xt);
 		if (compatibleOverlay) $(overlay).css({left: l, top: win.scrollTop(), width: w, height: win.height()});
 	}
 
