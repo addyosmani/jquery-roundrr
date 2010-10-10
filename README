@@ -3,5 +3,7 @@ RadMenu. Released under the GPL for public use.
 
 For further information about this plugin, please see AddyOsmani.com :)
 
-<h3>Project Summary</h3>
+jQuery Roundrr
+-----------------------------
 
+Roundrr is a plugin for plotting interactive image or multimedia content around a circle. It is based on RadMenu with an extended model for events occurring in the pre and post animation phases. It also contains further configuration for automated playback of a wheel of content and support for 'pick' interfaces which allow you to perform an action when an object falls between two other objects of fixed known position. 
