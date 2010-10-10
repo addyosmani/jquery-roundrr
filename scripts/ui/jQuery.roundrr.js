@@ -1,9 +1,24 @@
 /*!
  * jQuery Roundrr Plugin (2010)
  *
- * This version written by Addy Osmani 
- * extending Nirvana Tikku's RadMenu
- * 
+ * This version written by Addy Osmani extending Nirvana Tikku's RadMenu
+ *
+ * Roundrr is a plugin for plotting interactive image or multimedia content
+ * around a circle. It is based on RadMenu with an extended model for events
+ * occurring in the pre and post animation phases. It also contains further
+ * configuration for automated playback of a wheel of content and support for
+ * 'pick' interfaces which allow you to perform an action when an object 
+ * falls between two other objects of fixed known position. 
+ *
+ * For further documentation please see addyosmani.com or Roundrr on github
+ * at http://github.com/legacye/jquery-roundrr.
+ *
+ * This is an initial release and further forks/bug-patches are more than welcome
+ * for any behaviour you feel may require some fixing or improvement.
+ *
+ * For further information about plotting items in a circle or oval outside of this
+ * plugin, I recommend checking out my minimalist javascript library ShapeLib. 
+ *
  */
 
 ;(function($){
@@ -35,8 +50,8 @@
 		angleOffset: 0, // in radians
 		centerImageSrc: 'images/placeholder2.png',
 		centerX: 0,
-		centerY: 0,
-		requiredLeftA:'-55.1904px', // main image n-1's left position
+		centerY: 0, 
+		requiredLeftA:'-55.1904px', // override for positioning: main image n-1's left position
 		requiredTopA:'-143.253px',  // main image n-1's top 
 		requiredLeftB:'113.19px',   //main image n+1's left
 		requiredTopB:'-143.253px', //main image n+1's top
@@ -170,14 +185,12 @@
 			
 			if(doAutoplay)
 			{
-			
 			switch($m.opts.autoplayDirection)
 			{
 			 case 'clockwise':
 			 
 			setInterval(function()
 			{
-			//$m.opts.onNextBegin($m);
 			switchItems($m, $m.raditems().length-1, 0, $m.opts.animationEffect, 'next');
 			
 			}, $m.opts.autoplayDuration);
@@ -187,7 +200,6 @@
 			 case 'anticlockwise':
 			 setInterval(function()
 			{
-			//$m.opts.onPrevBegin($m);
 			switchItems($m, 0, $m.raditems().length-1, 1, 'prev');
 			
 			}, $m.opts.autoplayDuration);
@@ -401,7 +413,6 @@
 			{
 			if(i==0)
 			{
-			  
 			  $m.opts.onImageFocus($this);
 			  $this.find('img').addClass('selected');
 			 
