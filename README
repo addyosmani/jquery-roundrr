@@ -90,3 +90,8 @@ requiredLeftB:('pick' mode) A px string defining the necessary n+1's image's pos
 
 requiredTopB:('pick' mode) A px string defining the necessary n+1's image's position (top) in order to further configure the 'pick' mode. 
 
+
+Basic Rendering Tests
+-------------------------------
+
+Roundrr works consistently in all current major browsers and if you would like to take a look at examples of how it renders, see here: http://browsershots.org/http://addyosmani.com/resources/roundrr/
